@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Tsymbaliuk_Israel_IT</string>
+    <!--Main activity-->
+    <string name="for_you">Для вас</string>
+    <string name="headlines">Заголовки</string>
+    <string name="subscriptions">Підписки</string>
+    <string name="press">Преса</string>
+    <!--Main fragment-->
+    <string name="app_title">Новини</string>
+    <string name="search">Пошук</string>
+    <string name="covid_news_title">Новини про COVID-19</string>
+    <string name="covid_news_description">Переглядайте останні новини про коронавірус (COVID-19)</string>
+    <string name="hot_title">Коротко про головне</string>
+    <string name="hot_description">Головні новини зараз</string>
+    <!--Subscriptions-->
+    <string name="categories">Теми</string>
+    <string name="categories_description">Підписуйтеся на теми, щоб бачити більше новин у розділі "Для вас"</string>
+    <string name="categories_subscribe">Підписатися на теми</string>
+    <string name="sources_subscribe">Підписатися на джерела</string>
+    <string name="sources">Джерела</string>
+    <string name="sources_description">Підписуйтеся на джерела, щоб бачити більше новин у розділі "Для вас"</string>
+    <string name="saved">Saved News</string>
+    <string name="saved_description">Немає збережених новин</string>
+    <!--Press-->
+    <string name="populars_sources">Популярні джерела</string>
+    <string name="free">Безкоштовно</string>
+    <string name="show_more">Показати більше</string>
+    <string name="browse_by_category">Перегляд за категоріями</string>
+</resources>

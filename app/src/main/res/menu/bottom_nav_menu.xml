@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/mainFragment"
+        android:title="@string/for_you"
+        android:icon="@drawable/ic_person" />
+    <item android:id="@+id/categoryFragment"
+        android:title="@string/headlines"
+        android:icon="@drawable/ic_language" />
+    <item android:id="@+id/subscriptionFragment"
+        android:title="@string/subscriptions"
+        android:icon="@drawable/ic_star_border" />
+    <item android:id="@+id/pressFragment"
+        android:title="@string/press"
+        android:icon="@drawable/ic_books" />
+</menu>

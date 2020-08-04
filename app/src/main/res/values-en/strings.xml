@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tsymbaliuk_Israel_IT</string>
+    <!--Main activity-->
+    <string name="for_you">For you</string>
+    <string name="headlines">Заголовки</string>
+    <string name="subscriptions">Subscriptions</string>
+    <string name="press">Press</string>
+    <!--Main fragment-->
+    <string name="app_title">News</string>
+    <string name="search">Search</string>
+    <string name="covid_news_title">COVID-19 news:</string>
+    <string name="covid_news_description">See the latest coverage of the coronavirus (COVID-19)</string>
+    <string name="hot_title">Your briefing</string>
+    <string name="hot_description">Top stories at the moment</string>
+    <!--Subscriptions-->
+    <string name="categories">Topics</string>
+    <string name="categories_description">Підписуйтеся на теми, щоб бачити більше новин у розділі "Для вас"</string>
+    <string name="categories_subscribe">Підписатися на теми</string>
+    <string name="sources_subscribe">Підписатися на джерела</string>
+    <string name="sources">Sources</string>
+    <string name="sources_description">Підписуйтеся на джерела, щоб бачити більше новин у розділі "Для вас"</string>
+    <string name="saved">Saved News</string>
+    <string name="saved_description">Немає збережених новин</string>
+    <!--Press-->
+    <string name="populars_sources">Populars sources</string>
+    <string name="free">Free</string>
+    <string name="show_more">Show more</string>
+    <string name="browse_by_category">Browse by category</string>
+
+</resources>

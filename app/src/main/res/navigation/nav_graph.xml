@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/signUpFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.tsymbaliuk.tsymbaliuk_israel_it.main.MainFragment"
+        android:label="MainFragment" />
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.tsymbaliuk.tsymbaliuk_israel_it.category.CategoryFragment"
+        android:label="CategoryFragment" />
+    <fragment
+        android:id="@+id/subscriptionFragment"
+        android:name="com.tsymbaliuk.tsymbaliuk_israel_it.subscription.SubscriptionFragment"
+        android:label="SubscriptionFragment">
+        <action
+            android:id="@+id/action_subscriptionFragment_to_sourceFragment"
+            app:destination="@id/sourceFragment">
+            <argument
+                android:name="sourceIndex"
+                android:defaultValue="0"
+                app:argType="integer" />
+        </action>
+        <argument
+            android:name="sourceIndex"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/pressFragment"
+        android:name="com.tsymbaliuk.tsymbaliuk_israel_it.press.PressFragment"
+        android:label="PressFragment" />
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.tsymbaliuk.tsymbaliuk_israel_it.login.SignUpFragment"
+        android:label="SignUpFragment">
+        <action
+            android:id="@+id/action_signUpFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.tsymbaliuk.tsymbaliuk_israel_it.login.SignInFragment"
+        android:label="SignInFragment">
+        <action
+            android:id="@+id/action_signInFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sourceFragment"
+        android:name="com.tsymbaliuk.tsymbaliuk_israel_it.source.SourceFragment"
+        android:label="SourceFragment">
+        <argument
+            android:name="sourceIndex"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+</navigation>
