@@ -16,14 +16,6 @@
         android:id="@+id/subscriptionFragment"
         android:name="com.tsymbaliuk.tsymbaliuk_israel_it.subscription.SubscriptionFragment"
         android:label="SubscriptionFragment">
-        <action
-            android:id="@+id/action_subscriptionFragment_to_sourceFragment"
-            app:destination="@id/sourceFragment">
-            <argument
-                android:name="sourceIndex"
-                android:defaultValue="0"
-                app:argType="integer" />
-        </action>
         <argument
             android:name="sourceIndex"
             app:argType="integer"
@@ -32,7 +24,16 @@
     <fragment
         android:id="@+id/pressFragment"
         android:name="com.tsymbaliuk.tsymbaliuk_israel_it.press.PressFragment"
-        android:label="PressFragment" />
+        android:label="PressFragment" >
+        <action
+            android:id="@+id/action_pressFragment_to_sourceFragment"
+            app:destination="@id/sourceFragment" >
+            <argument
+                android:name="sourceIndex"
+                app:argType="integer"
+                android:defaultValue="0" />
+        </action>
+    </fragment>
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.tsymbaliuk.tsymbaliuk_israel_it.login.SignUpFragment"

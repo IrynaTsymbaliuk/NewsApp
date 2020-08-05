@@ -8,12 +8,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.tsymbaliuk.domain.article.model.ArticleModel
 import com.tsymbaliuk.tsymbaliuk_israel_it.R
-import com.tsymbaliuk.tsymbaliuk_israel_it.repository.model.ArticleModel
 
 class ArticleAdapter(private val context: Context) : RecyclerView.Adapter<ArticleAdapter.MainViewHolder>() {
 
-    var articleList = listOf<ArticleModel>()
+    var articleList = arrayListOf<ArticleModel>()
 
     private lateinit var itemClickListener: (Int) -> Unit
 
@@ -72,7 +72,8 @@ class ArticleAdapter(private val context: Context) : RecyclerView.Adapter<Articl
     }
 
     fun updateData(newArticleList: List<ArticleModel>) {
-        articleList = newArticleList
+        articleList.clear()
+        articleList.addAll(newArticleList)
         notifyDataSetChanged()
     }
 

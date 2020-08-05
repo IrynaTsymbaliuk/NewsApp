@@ -8,8 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.tsymbaliuk.domain.source.model.SourceModel
 import com.tsymbaliuk.tsymbaliuk_israel_it.R
-import com.tsymbaliuk.tsymbaliuk_israel_it.repository.model.SourceModel
 
 class SourceSubscribeAdapter(val context: Context) : RecyclerView.Adapter<SourceSubscribeAdapter.SubscribeSourceViewHolder>() {
 

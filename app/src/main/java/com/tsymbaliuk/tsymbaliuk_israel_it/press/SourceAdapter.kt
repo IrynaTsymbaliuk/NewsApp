@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.tsymbaliuk.domain.source.model.SourceModel
 import com.tsymbaliuk.tsymbaliuk_israel_it.R
-import com.tsymbaliuk.tsymbaliuk_israel_it.repository.model.SourceModel
 import kotlin.math.min
 
 class SourceAdapter : RecyclerView.Adapter<SourceAdapter.SourceViewHolder>() {
@@ -53,9 +53,9 @@ class SourceAdapter : RecyclerView.Adapter<SourceAdapter.SourceViewHolder>() {
 
         holder.tvNumber.text = (position + 1).toString()
         holder.tvSourceName.text = sourceList[position].name
-        if (sourceList[position].isSubscribed == null || !sourceList[position].isSubscribed!!) {
+        /*if (sourceList[position].isSubscribed == null || !sourceList[position].isSubscribed!!) {
             holder.ivAddToSourceSubscriptions.setImageResource(R.drawable.ic_star_border)
-        } else holder.ivAddToSourceSubscriptions.setImageResource(R.drawable.ic_star)
+        } else holder.ivAddToSourceSubscriptions.setImageResource(R.drawable.ic_star)*/
         holder.ivAddToSourceSubscriptions.setOnClickListener {
             if (::addToFavoriteClickListener.isInitialized) {
                 holder.ivAddToSourceSubscriptions.setImageResource(R.drawable.ic_star)
@@ -65,7 +65,7 @@ class SourceAdapter : RecyclerView.Adapter<SourceAdapter.SourceViewHolder>() {
 
     }
 
-    fun updateData(newSourceModelList: List<SourceModel>) {
+    fun updateData(newSourceModelList: ArrayList<SourceModel>) {
         sourceList.clear()
         sourceList.addAll(newSourceModelList)
         notifyDataSetChanged()

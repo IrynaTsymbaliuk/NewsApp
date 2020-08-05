@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tsymbaliuk.tsymbaliuk_israel_it.R
@@ -37,6 +39,7 @@ class SourceFragment: Fragment() {
 
         setUpArticleRV()
         setUpCurrentSource(args.sourceIndex)
+        setUpTopBar()
 
     }
 
@@ -56,14 +59,21 @@ class SourceFragment: Fragment() {
             adapter = sourceAdapter
         }
 
-        articleViewModel.articleList.observe(viewLifecycleOwner, Observer {
+        /*articleViewModel.articleList.observe(viewLifecycleOwner, Observer {
             sourceAdapter.updateData(it)
-        })
+        })*/
     }
 
     private fun setUpCurrentSource(index: Int) {
         val currentSource = subscriptionViewModel.sourceSubscriptionList.value?.get(index)
         tvSourceName.text = currentSource?.name?: "Error"
+    }
+
+    private fun setUpTopBar() {
+        ivArrowBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+        ivStar.setOnClickListener {  }
     }
 
 }

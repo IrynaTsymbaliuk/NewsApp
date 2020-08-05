@@ -24,24 +24,8 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { navController, destination, _ ->
             when (destination.id) {
-                R.id.sourceFragment -> {
-                    /*ivArrowBack.visibility = View.VISIBLE
-                    ivArrowBack.setOnClickListener {
-                        onBackPressed()
-                    }
-                    searchView.visibility = View.INVISIBLE
-                    tvTitle.visibility = View.INVISIBLE
-                    ivStar.visibility = View.VISIBLE
-
-                    ivMore.visibility = View.VISIBLE*/
-                }
-                else -> {
-                    /*ivArrowBack.visibility = View.INVISIBLE
-                    searchView.visibility = View.VISIBLE
-                    tvTitle.visibility = View.VISIBLE
-                    ivStar.visibility = View.GONE
-                    ivMore.visibility = View.GONE*/
-                }
+                R.id.sourceFragment -> bottom_nav_view.visibility = View.GONE
+                else -> bottom_nav_view.visibility = View.VISIBLE
             }
         }
 

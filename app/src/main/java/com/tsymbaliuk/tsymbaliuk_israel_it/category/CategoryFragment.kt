@@ -17,7 +17,6 @@ import org.koin.android.viewmodel.ext.android.sharedViewModel
 class CategoryFragment: Fragment() {
 
     private lateinit var categoryAdapter: ArticleAdapter
-
     private val categoryViewModel: CategoryViewModel by sharedViewModel()
 
     override fun onCreateView(

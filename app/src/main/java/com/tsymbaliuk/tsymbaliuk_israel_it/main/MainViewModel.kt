@@ -1,14 +1,15 @@
 package com.tsymbaliuk.tsymbaliuk_israel_it.main
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.tsymbaliuk.tsymbaliuk_israel_it.repository.AppRepository
-import com.tsymbaliuk.tsymbaliuk_israel_it.repository.model.ArticleModel
+import androidx.lifecycle.asLiveData
+import com.tsymbaliuk.domain.article.model.ArticleModel
+import com.tsymbaliuk.domain.article.usecase.ArticleUseCase
 
-class MainViewModel(appRepository: AppRepository) : ViewModel() {
+class MainViewModel(private val articleUseCase: ArticleUseCase) : ViewModel() {
 
-    private val _articleList = appRepository.getNewsByCountry("ua")
     val articleList: LiveData<List<ArticleModel>>
-        get() = _articleList
+        get() = articleUseCase.getTopUaNews().asLiveData()
 
 }

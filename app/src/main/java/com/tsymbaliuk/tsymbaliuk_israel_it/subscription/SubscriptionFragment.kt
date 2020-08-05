@@ -1,25 +1,15 @@
 package com.tsymbaliuk.tsymbaliuk_israel_it.subscription
 
 import android.os.Bundle
-import android.view.Gravity
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.asLiveData
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tsymbaliuk.tsymbaliuk_israel_it.R
 import com.tsymbaliuk.tsymbaliuk_israel_it.main.ArticleAdapter
-import com.tsymbaliuk.tsymbaliuk_israel_it.repository.local_data_source.ArticleEntity
-import com.tsymbaliuk.tsymbaliuk_israel_it.repository.local_data_source.CategoryEntity
-import com.tsymbaliuk.tsymbaliuk_israel_it.repository.local_data_source.FullSourceEntity
-import com.tsymbaliuk.tsymbaliuk_israel_it.repository.model.ArticleModel
-import com.tsymbaliuk.tsymbaliuk_israel_it.repository.model.SourceModel
-import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.fragment_subscription.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
@@ -40,27 +30,27 @@ class SubscriptionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.categorySubscriptionList.observe(viewLifecycleOwner, Observer {
+      /*  viewModel.categorySubscriptionList.observe(viewLifecycleOwner, Observer {
             if (it.isNullOrEmpty()) setEmptyCategorySubscriptions() else setAvailableCategorySubscriptions()
-        })
+        })*/
 
-        viewModel.sourceSubscriptionList.observe(viewLifecycleOwner, Observer {
+        /*viewModel.sourceSubscriptionList.observe(viewLifecycleOwner, Observer {
             if (it.isNullOrEmpty()) {
                 setEmptySourceSubscriptions()
             } else {
                 if (!::sourceSubscribeAdapter.isInitialized) initSourceSubscribeAdapter()
                     setAvailableSourceSubscriptions(it)
             }
-        })
+        })*/
 
-        viewModel.savedArticleList.observe(viewLifecycleOwner, Observer {
+        /*viewModel.savedArticleList.observe(viewLifecycleOwner, Observer {
             if (it.isNullOrEmpty()) {
                 setEmptySavedArticles()
             } else {
                 if (!::articleAdapter.isInitialized) initArticleAdapter()
                 setAvailableSavedArticles(it)
             }
-        })
+        })*/
 
     }
 
@@ -85,26 +75,29 @@ class SubscriptionFragment : Fragment() {
         tvSourceSubscribe.text = "Підписатися на джерела"
     }
 
-    private fun setAvailableSourceSubscriptions(newData: List<SourceModel>) {
+    /*private fun setAvailableSourceSubscriptions(newData: List<SourceModel>) {
+        Log.v("Error", "setAvailableSourceSubscriptions ${newData.size}")
         sourceSubscribeAdapter.updateData(newData)
         rvSourceSubscribesList.visibility = View.VISIBLE
         tvSourceDescription.visibility = View.INVISIBLE
         ivSourcePhoto.visibility = View.INVISIBLE
         tvSourceSubscribe.text = "Переглянути все й керувати"
-    }
+    }*/
 
     private fun setEmptySavedArticles() {
         rvSavedArticlesList.visibility = View.INVISIBLE
         tvSavedDescription.visibility = View.VISIBLE
     }
 
-    private fun setAvailableSavedArticles(newData: List<ArticleModel>) {
+    /*private fun setAvailableSavedArticles(newData: List<ArticleModel>) {
+        Log.v("Error", "setAvailableSavedArticles ${newData.size}")
         articleAdapter.updateData(newData)
         rvSavedArticlesList.visibility = View.VISIBLE
         tvSavedDescription.visibility = View.INVISIBLE
-    }
+    }*/
 
     private fun initArticleAdapter() {
+        Log.v("Error", "initArticleAdapter")
         articleAdapter = ArticleAdapter(requireContext())
         articleAdapter.setItemClickListener { position ->
             Toast.makeText(requireContext(), "Item $position Click", Toast.LENGTH_SHORT).show()
@@ -119,9 +112,10 @@ class SubscriptionFragment : Fragment() {
     }
 
     private fun initSourceSubscribeAdapter() {
+        Log.v("Error", "initSourceSubscribeAdapter")
         sourceSubscribeAdapter = SourceSubscribeAdapter(requireContext())
         sourceSubscribeAdapter.setItemClickListener { position ->
-            findNavController().navigate(SubscriptionFragmentDirections.actionSubscriptionFragmentToSourceFragment(position))
+            Toast.makeText(requireContext(), "Item $position Click", Toast.LENGTH_SHORT).show()
         }
         sourceSubscribeAdapter.setMoreClickListener { position ->
             Toast.makeText(requireContext(), "More $position Click", Toast.LENGTH_SHORT).show()

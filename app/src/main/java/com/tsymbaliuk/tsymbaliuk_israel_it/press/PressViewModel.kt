@@ -1,45 +1,71 @@
 package com.tsymbaliuk.tsymbaliuk_israel_it.press
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.tsymbaliuk.tsymbaliuk_israel_it.repository.AppRepository
-import com.tsymbaliuk.tsymbaliuk_israel_it.repository.local_data_source.FullSourceEntity
-import com.tsymbaliuk.tsymbaliuk_israel_it.repository.local_data_source.UserDatabase
-import com.tsymbaliuk.tsymbaliuk_israel_it.repository.model.SourceModel
-import com.tsymbaliuk.tsymbaliuk_israel_it.repository.remote_data_source.NewsApi
-import com.tsymbaliuk.tsymbaliuk_israel_it.repository.remote_data_source.SourceResponse
+import androidx.lifecycle.*
+import com.tsymbaliuk.domain.source.model.SourceModel
+import com.tsymbaliuk.domain.source.usecase.SourceUseCase
+import com.tsymbaliuk.domain.user.usecase.UserUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class PressViewModel(val repository: AppRepository) : ViewModel() {
+class PressViewModel(
+    private val userUseCase: UserUseCase,
+    private val sourceUseCase: SourceUseCase
+) : ViewModel() {
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    val sourceList: LiveData<List<SourceModel>>
-        get() = repository.getAllSource()
+    private  var subscriptionSourceList  = userUseCase.getUserSourceSubscriptions().asLiveData()
+    private var topSourceList =  sourceUseCase.getAllSources().asLiveData()
 
-    private val sourceSubscriptionList: LiveData<List<SourceModel>>
-        get() = repository.getSourceSubscriptions()
+    val mergedSourceList = MediatorLiveData<ArrayList<SourceModel>>().apply { value = ArrayList<SourceModel>() }
+
+    init {
+        mergedSourceList.addSource(subscriptionSourceList, Observer {
+            combineSourceLists()
+        })
+        mergedSourceList.addSource(topSourceList, Observer {
+            combineSourceLists()
+        })
+    }
+
+    private fun getSubscriptionSourceList() { coroutineScope.launch {} }
 
     fun addToSubscriptions(position: Int) {
 
-        coroutineScope.launch {
+        /*coroutineScope.launch {
             try {
+                Log.v("Error", "try to save source subscription")
                 repository.addToSourceSubscriptions(
                     sourceList.value!![position].name ?: "",
                     sourceList.value!![position].description ?: "",
                     sourceList.value!![position].url ?: ""
                 )
             } catch (e: Exception) {
-                Log.v("Error", e.message.toString())
+                Log.v("Error", "error with saving source subscription")
             }
+        }*/
+
+    }
+
+    private fun combineSourceLists() {
+
+        val subscriptionList = subscriptionSourceList.value
+        val topList = topSourceList.value
+
+        mergedSourceList.value?.clear()
+
+        if (!subscriptionList.isNullOrEmpty()) {
+            mergedSourceList.value?.addAll(subscriptionList)
+            mergedSourceList.value = mergedSourceList.value
+        } else if (!topList.isNullOrEmpty()) {
+            mergedSourceList.value?.addAll(topList)
+            mergedSourceList.value = mergedSourceList.value
         }
 
     }
+
 
 }
